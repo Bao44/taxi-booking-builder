@@ -3,8 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 function Cars() {
-
-    const [selectedCar, setSelectedCar] = useState<any>();
+  const [selectedCar, setSelectedCar] = useState<any>();
 
   return (
     <div className="mt-3">
@@ -13,10 +12,10 @@ function Cars() {
         {CarsList.map((item, index) => (
           <div
             key={index}
-            className={`m-2 p-2 border-[2px] rounded-md hover:border-yellow-400 cursor-pointer 
-                ${index == selectedCar?
-                    'border-yellow-400 border-[2px]'
-                :null}`}
+            className={`m-2 p-2 border-[1px] rounded-md hover:border-yellow-400 cursor-pointer 
+                ${
+                  index == selectedCar ? "border-yellow-400 border-[2px]" : null
+                }`}
             onClick={() => setSelectedCar(index)}
           >
             <Image
@@ -28,7 +27,9 @@ function Cars() {
             />
             <h2 className="text-[12px text-gray-500">
               {item.name}
-              <span className="float-right font-medium text-black">{item.charges * 8}$</span>
+              <span className="float-right font-medium text-black">
+                {item.charges * 8}$
+              </span>
             </h2>
           </div>
         ))}
