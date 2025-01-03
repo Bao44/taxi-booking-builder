@@ -7,6 +7,7 @@ import { SourceCoordinateContext } from "@/context/SourceCoordinateContext";
 import { DestinationCoordinateContext } from "@/context/DestinationCoordinateContext";
 import { DirectionDataContext } from "@/context/DirectionDataContext";
 import MapBoxRoute from "./MapBoxRoute";
+import DistanceTime from "./DistanceTime";
 
 const session_token = "5ccce4a4-ab0a-4a7c-943d-580e55542363";
 const MAPBOX_DRIVING_ENDPOINT =
@@ -96,6 +97,9 @@ function MapBoxMap() {
             ) : null}
           </Map>
         ) : null}
+      </div>
+      <div className="absolute bottom-[90px] z-20 right-[20px] hidden md:block">
+        <DistanceTime />
       </div>
     </div>
   );
