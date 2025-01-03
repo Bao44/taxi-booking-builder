@@ -5,6 +5,11 @@ taxi-booking-builder-b44.vercel.app
 ```
 --- 
 
+#### Demo web
+![Screenshot 2025-01-03 212445](https://github.com/user-attachments/assets/f75a332b-326c-4768-bd74-0af006dcac86)
+
+---
+
 #### Support tools
 
 [1]: <https://nextui.org/>
