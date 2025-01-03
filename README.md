@@ -1,17 +1,55 @@
+## Deploy on Vercel
+
+```bash 
+ai-kids-story-builder-b44.vercel.app
+```
+--- 
+
+#### Support tools
+
+[1]: <https://nextui.org/>
+
+[2]: <https://clerk.com/?utm_source=tube-guruji&utm_medium=youtube&utm_campaign=kids-story>
+
+[3]: <https://www.flaticon.com/>
+
+[4]: <https://www.mapbox.com/>
+
+[5]:<https://visgl.github.io/react-map-gl/>
+
+[6]: <https://developer.paypal.com/home/>
+
+
+
+- [NextUI][1]
+- [Clerk][2]
+- [Flaticon][3]
+- [Mapbox][4]
+- [React Map GL][5]
+- [Paypal][6]
+
+--- 
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Install project
+
+```bash
+git clone https://github.com/Bao44/taxi-booking-builder.git
+```
 
 ## Getting Started
 
-First, run the development server:
+First, install `node_modules`:
+
+```bash
+npm install
+```
+
+Second, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -34,12 +72,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
-[1]: <https://www.mapbox.com/>
-[2]:<https://visgl.github.io/react-map-gl/>
-[3]:<https://developer.paypal.com/home/>
-
-- [Mapbox][1]
-- [React Map GL][2]
-- [Paypal][3]
