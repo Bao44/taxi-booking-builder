@@ -2,6 +2,7 @@
 import Booking from "@/components/Booking/Booking";
 import MapBoxMap from "@/components/Map/MapBoxMap";
 import { DestinationCoordinateContext } from "@/context/DestinationCoordinateContext";
+import { DirectionDataContext } from "@/context/DirectionDataContext";
 import { SourceCoordinateContext } from "@/context/SourceCoordinateContext";
 import { UserLocationContext } from "@/context/UserLocationContext";
 import Image from "next/image";
@@ -11,6 +12,7 @@ export default function Home() {
   const [userLocation, setUserLocation] = useState<any>();
   const [sourceCoordinates, setSourceCoordinates] = useState<any>([]);
   const [destinationCoordinates, setDestinationCoordinates] = useState<any>([]);
+  const [directionData, setDirectionData] = useState<any>([]);
 
   useEffect(() => {
     getUserLocation();
@@ -33,14 +35,18 @@ export default function Home() {
           <DestinationCoordinateContext.Provider
             value={{ destinationCoordinates, setDestinationCoordinates }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-3">
-              <div className="">
-                <Booking />
+            <DirectionDataContext.Provider
+              value={{ directionData, setDirectionData }}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3">
+                <div className="">
+                  <Booking />
+                </div>
+                <div className="col-span-2">
+                  <MapBoxMap />
+                </div>
               </div>
-              <div className="col-span-2">
-                <MapBoxMap />
-              </div>
-            </div>
+            </DirectionDataContext.Provider>
           </DestinationCoordinateContext.Provider>
         </SourceCoordinateContext.Provider>
       </UserLocationContext.Provider>
