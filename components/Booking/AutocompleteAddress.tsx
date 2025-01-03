@@ -86,11 +86,24 @@
 
 // export default AutocompleteAddress;
 
-import React, { useEffect, useState } from "react";
+import { DestinationCoordinateContext } from "@/context/DestinationCoordinateContext";
+import { SourceCoordinateContext } from "@/context/SourceCoordinateContext";
+import React, { useContext, useEffect, useState } from "react";
+
+const session_token = "5ccce4a4-ab0a-4a7c-943d-580e55542363";
+const MAPBOX_RETRIVE_URL =
+  "https://api.mapbox.com/search/searchbox/v1/retrieve/";
 
 function AutocompleteAddress() {
   const [source, setSource] = useState(""); // Khởi tạo với chuỗi rỗng
   const [destination, setDestination] = useState(""); // Khởi tạo với chuỗi rỗng
+
+  const { sourceCoordinates, setSourceCoordinates } = useContext(
+    SourceCoordinateContext
+  );
+  const { destinationCoordinates, setDestinationCoordinates } = useContext(
+    DestinationCoordinateContext
+  );
 
   const [addressList, setAddressList] = useState<any>([]);
   const [sourceChange, setSourceChange] = useState(false); // Đặt giá trị mặc định là false
@@ -126,6 +139,54 @@ function AutocompleteAddress() {
     setAddressList(result);
   };
 
+  const onSourceAddressClick = async (item: any) => {
+    setSource(item.full_address);
+    setAddressList([]); // Xóa danh sách địa chỉ khi chọn
+    setSourceChange(false); // Đặt lại trạng thái
+
+    const res = await fetch(
+      MAPBOX_RETRIVE_URL +
+        item.mapbox_id +
+        "?session_token=" +
+        session_token +
+        "&access_token=" +
+        process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
+    );
+
+    const result = await res.json();
+
+    setSourceCoordinates({
+      lng: result.features[0].geometry.coordinates[0],
+      lat: result.features[0].geometry.coordinates[1],
+    });
+
+    console.log(result);
+  };
+
+  const onDestinationAddressClick = async (item: any) => {
+    setDestination(item.full_address);
+    setAddressList([]); // Xóa danh sách địa chỉ khi chọn
+    setDestinationChange(false); // Đặt lại trạng thái
+    
+    const res = await fetch(
+      MAPBOX_RETRIVE_URL +
+        item.mapbox_id +
+        "?session_token=" +
+        session_token +
+        "&access_token=" +
+        process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
+    );
+
+    const result = await res.json();
+
+    setDestinationCoordinates({
+      lng: result.features[0].geometry.coordinates[0],
+      lat: result.features[0].geometry.coordinates[1],
+    });
+
+    console.log(result);
+  };
+
   return (
     <div className="mt-5">
       <div className="relative z-10">
@@ -147,9 +208,7 @@ function AutocompleteAddress() {
                   key={index}
                   className="p-3 hover:bg-gray-100 cursor-pointer"
                   onClick={() => {
-                    setSource(item.full_address);
-                    setAddressList([]); // Xóa danh sách địa chỉ khi chọn
-                    setSourceChange(false); // Đặt lại trạng thái
+                    onSourceAddressClick(item);
                   }}
                 >
                   {item.full_address}
@@ -182,9 +241,7 @@ function AutocompleteAddress() {
                   key={index}
                   className="p-3 hover:bg-gray-100 cursor-pointer"
                   onClick={() => {
-                    setDestination(item.full_address);
-                    setAddressList([]); // Xóa danh sách địa chỉ khi chọn
-                    setDestinationChange(false); // Đặt lại trạng thái
+                    onDestinationAddressClick(item);
                   }}
                 >
                   {item.full_address}
