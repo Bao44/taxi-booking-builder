@@ -38,6 +38,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 [1]: <https://www.mapbox.com/>
 [2]:<https://visgl.github.io/react-map-gl/>
+[3]:<https://developer.paypal.com/home/>
 
 - [Mapbox][1]
 - [React Map GL][2]
+- [Paypal][3]
