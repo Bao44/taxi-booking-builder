@@ -1,7 +1,7 @@
 ## Deploy on Vercel
 
 ```bash 
-ai-kids-story-builder-b44.vercel.app
+taxi-booking-builder-b44.vercel.app
 ```
 --- 
 
